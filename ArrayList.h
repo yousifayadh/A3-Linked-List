@@ -11,11 +11,12 @@ template <typename T>
 
 class ArrayList : public List<T>
 {
+public:
     void addFront(T* value) override
     {
         if (size_ >= CAPACITY)
         {
-            std::cout <<"ArrayList is full." << std::endl;
+            std::cout << "ArrayList is full." << std::endl;
             return;
         }
         for (int i = size_; i > 0; --i)
@@ -28,13 +29,14 @@ class ArrayList : public List<T>
 
     void deleteFront() override
     {
-        if (size == 0)
+        if (size_ == 0)
         {
-            std::cout <<"ArrayList is empty." << std::endl;
+            std::cout << "ArrayList is empty." << std::endl;
             return;
         }
         delete data_[0];
-        for (int i = 0; i < size_ - 1; ++i) {
+        for (int i = 0; i < size_ - 1; ++i)
+        {
             data_[i] = data_[i + 1];
         }
         --size_;
@@ -64,6 +66,7 @@ class ArrayList : public List<T>
             delete data_[i];
         }
     }
+
 private:
     static const int CAPACITY = 20;
     T* data_[CAPACITY];
